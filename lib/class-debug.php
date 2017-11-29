@@ -9,6 +9,11 @@
  * Class for debugging functionality.
  */
 class Debug {
+	/**
+	 * Directory for the debug logs.
+	 *
+	 * @var  string
+	 */
 	const DEBUG_LOG_DIR = '/logs/';
 
 	/**
@@ -82,19 +87,20 @@ class Debug {
 	 * @return void
 	 */
 	public static function log( $message ) {
+		// Determine where the debug log is.
 		$log_dir = BASE_DIR . self::DEBUG_LOG_DIR;
 
-		// bail early if directory doesn't exist.
+		// Bail early if directory doesn't exist.
 		if ( ! is_writable( $log_dir ) ) { // @codingStandardsIgnoreLine
 			return;
 		}
 
-		// check if message is not a string.
+		// Check if message is not a string.
 		if ( ! is_string( $message ) ) {
 			$message = print_r( $message, true ); // @codingStandardsIgnoreLine
 		}
 
-		// suppress errors in case file doesn't exist.
+		// Suppress errors in case file doesn't exist.
 		@file_put_contents( $log_dir . 'debug.log', "\n[" . date( 'd-M-Y h:i:s A' ) . '] ' . $message, FILE_APPEND ); // @codingStandardsIgnoreLine
 	}
 }
