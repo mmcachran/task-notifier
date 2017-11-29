@@ -56,6 +56,8 @@ class DB {
 
 	/**
 	 * Verify DB credentials
+	 *
+	 * @return  void
 	 */
 	protected static function check_db_credentials() {
 		if ( ! defined( 'DB_HOST' ) ) {
