@@ -26,6 +26,8 @@ if ( ! defined( 'DB_NAME' ) ) {
 
 /**
  * BC API credentials
+ *
+ * New applications can be setup here: https://launchpad.37signals.com/integrations
  */
 if ( ! defined( 'BC_ID' ) ) {
 	define( 'BC_ID', '' );
