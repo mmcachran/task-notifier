@@ -5,17 +5,12 @@
  * @package  Basecamp RSS Feed Parser
  */
 
+namespace Basecamp;
+
 /**
  * Class to handle Basecamp RSS feed parsing.
  */
-class Basecamp_Old_Tasks extends Basecamp {
-	/**
-	 * Holds single instance of this class
-	 *
-	 * @var Basecamp_Old_Tasks
-	 */
-	protected static $instance = null;
-
+class Basecamp_Old_Tasks extends \Basecamp\Base {
 	/**
 	 * Include tasks not updated in this amount of days.
 	 *
@@ -47,12 +42,8 @@ class Basecamp_Old_Tasks extends Basecamp {
 	/**
 	 * Returns a single instance of the class
 	 */
-	public static function get_instance() {
-		if ( null === self::$instance ) {
-			self::$instance = new self;
-		}
-
-		return self::$instance;
+	public function __construct() {
+		parent::__construct();
 	}
 
 	/**
@@ -104,7 +95,7 @@ class Basecamp_Old_Tasks extends Basecamp {
 		);
 
 		// Get remaining tasks for the project.
-		$tasks = Request::get( $tasks_url, $auth_args );
+		$tasks = \Request::get( $tasks_url, $auth_args );
 
 		// Bail early if no tasks.
 		if ( empty( $tasks ) ) {

@@ -5,10 +5,12 @@
  * @package  Basecamp RSS Feed Parser
  */
 
+namespace Basecamp;
+
 /**
  * Class to handle Basecamp RSS feed parsing.
  */
-class Basecamp {
+class Base {
 	/**
 	 * Base URL for API requests
 	 */
@@ -44,8 +46,8 @@ class Basecamp {
 	public function __construct() {
 		$this->debug = isset( $_GET['debug'] ) ? true : false; // @codingStandardsIgnoreLine
 
-		$this->oauth_tokens = Option::get( 'bc_tokens' );
-		$this->last_run = ! $this->debug ? Option::get( 'bc_last_run' ) : false;
+		$this->oauth_tokens = \Option::get( 'bc_tokens' );
+		$this->last_run = ! $this->debug ? \Option::get( 'bc_last_run' ) : false;
 
 		// Perform BC token auth.
 		$this->do_auth();
@@ -110,7 +112,7 @@ class Basecamp {
 
 		$token_url = self::API_BASE . 'authorization/token';
 
-		$response = Request::post( $token_url, $params );
+		$response = \Request::post( $token_url, $params );
 
 		// Bail early if no response.
 		if ( empty( $response ) ) {
@@ -121,7 +123,7 @@ class Basecamp {
 		$response->timestamp = strtotime( 'now' );
 
 		// Update tokens option.
-		Option::update( 'bc_tokens', $response );
+		\Option::update( 'bc_tokens', $response );
 
 		return $response;
 	}
@@ -167,7 +169,7 @@ class Basecamp {
 
 		$token_url = self::API_BASE . 'authorization/token';
 
-		$response = Request::post( $token_url, $params );
+		$response = \Request::post( $token_url, $params );
 
 		// Bail early if no response.
 		if ( empty( $response ) ) {
@@ -179,7 +181,7 @@ class Basecamp {
 		$response->timestamp = strtotime( 'now' );
 
 		// Update tokens option.
-		Option::update( 'bc_tokens', $response );
+		\Option::update( 'bc_tokens', $response );
 
 		return $response;
 	}
@@ -201,7 +203,7 @@ class Basecamp {
 			'token' => $this->oauth_tokens->access_token,
 		);
 
-		return Request::get( $projects_url, $auth_args );
+		return \Request::get( $projects_url, $auth_args );
 	}
 
 	/**
@@ -226,7 +228,7 @@ class Basecamp {
 			'token' => $this->oauth_tokens->access_token,
 		);
 
-		$results = Request::get( $topics_url, $auth_args );
+		$results = \Request::get( $topics_url, $auth_args );
 
 		// Bail early if no results.
 		if ( empty( $results ) ) {
