@@ -13,8 +13,8 @@ if ( file_exists( BASE_DIR . '/config.php' ) ) {
 }
 
 // Include autoloader file.
-if ( file_exists( BASE_DIR . '/lib/autoloader.php' ) ) {
-	require_once( BASE_DIR . '/lib/autoloader.php' );
+if ( file_exists( BASE_DIR . '/lib/class-autoloader.php' ) ) {
+	require_once( BASE_DIR . '/lib/class-autoloader.php' );
 }
 
 // Check for un and pw to be defined.
@@ -62,7 +62,7 @@ function wds_get_project_slack_channel( $topic ) {
 }
 
 // Get an instance of BC class and fetch new topics.
-$basecamp = Basecamp_New_Tasks::get_instance();
+$basecamp = new \Basecamp\Basecamp_New_Tasks();
 $topics = $basecamp->get_new_topics();
 
 // Bail early if no topics.
@@ -71,7 +71,7 @@ if ( empty( $topics ) ) {
 }
 
 // Instantiate the Slack class.
-$slack = Slack::get_instance();
+$slack = \Slack::get_instance();
 
 // Loop through and create conversations.
 foreach ( (array) $topics as $topic ) {
