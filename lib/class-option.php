@@ -19,7 +19,7 @@ class Option {
 	public static function update( $key, $value ) {
 		// Serialize value if not a string.
 		if ( ! is_string( $value ) && ! is_numeric( $value ) ) {
-			$value = serialize( $value );
+			$value = serialize( $value ); // @codingStandardsIgnoreLine
 		}
 
 		// Prepare query.
