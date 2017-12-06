@@ -43,7 +43,7 @@ class Base {
 	 *
 	 * @return void
 	 */
-	public function __construct() {
+	protected function __construct() {
 		$this->debug = isset( $_GET['debug'] ) ? true : false; // @codingStandardsIgnoreLine
 
 		$this->oauth_tokens = \Option::get( 'bc_tokens' );

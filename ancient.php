@@ -18,7 +18,7 @@ if ( file_exists( BASE_DIR . '/lib/class-autoloader.php' ) ) {
 }
 
 // Fetch old tasks.
-$basecamp = new \Basecamp\Basecamp_Old_Tasks::get_instance();
+$basecamp = \Basecamp\Basecamp_Old_Tasks::get_instance();
 $project_tasks = $basecamp->get_old_tasks();
 
 ?>
