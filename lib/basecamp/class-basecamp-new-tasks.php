@@ -54,8 +54,12 @@ class Basecamp_New_Tasks extends \Basecamp\Base {
 	/**
 	 * Returns a single instance of the class
 	 */
-	public function __construct() {
-		parent::__construct();
+	public static function get_instance() {
+		if ( null === self::$instance ) {
+			self::$instance = new self;
+		}
+
+		return self::$instance;
 	}
 
 	/**

@@ -62,7 +62,7 @@ function wds_get_project_slack_channel( $topic ) {
 }
 
 // Get an instance of BC class and fetch new topics.
-$basecamp = new \Basecamp\Basecamp_New_Tasks();
+$basecamp = \Basecamp\Basecamp_New_Tasks::get_instance();
 $topics = $basecamp->get_new_topics();
 
 // Bail early if no topics.

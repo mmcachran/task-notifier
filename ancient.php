@@ -17,7 +17,8 @@ if ( file_exists( BASE_DIR . '/lib/class-autoloader.php' ) ) {
 	require_once( BASE_DIR . '/lib/class-autoloader.php' );
 }
 
-$basecamp = new \Basecamp\Basecamp_Old_Tasks();
+// Fetch old tasks.
+$basecamp = new \Basecamp\Basecamp_Old_Tasks::get_instance();
 $project_tasks = $basecamp->get_old_tasks();
 
 ?>
@@ -30,7 +31,7 @@ $project_tasks = $basecamp->get_old_tasks();
 		// @codingStandardsIgnoreStart
 		echo '<pre>';
 		var_dump( $project_tasks );
-		die;
+		echo '</pre>';
 		// @codingStandardsIgnoreEnd
 		?>
 	</body>

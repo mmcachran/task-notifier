@@ -12,6 +12,13 @@ namespace Basecamp;
  */
 class Basecamp_Old_Tasks extends \Basecamp\Base {
 	/**
+	 * Holds single instance of this class
+	 *
+	 * @var Basecamp_Old_Tasks
+	 */
+	protected static $instance = null;
+
+	/**
 	 * Include tasks not updated in this amount of days.
 	 *
 	 * @var  integer
@@ -42,8 +49,12 @@ class Basecamp_Old_Tasks extends \Basecamp\Base {
 	/**
 	 * Returns a single instance of the class
 	 */
-	public function __construct() {
-		parent::__construct();
+	public static function get_instance() {
+		if ( null === self::$instance ) {
+			self::$instance = new self;
+		}
+
+		return self::$instance;
 	}
 
 	/**
