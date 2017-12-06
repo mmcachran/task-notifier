@@ -62,5 +62,4 @@ class HC {
 	public function send_message( $msg, $from = 'BC SLA', $msg_color = 'red' ) {
 		$this->hc->message_room( self::HC_ROOM, $from, $msg, true, $msg_color );
 	}
-
 }

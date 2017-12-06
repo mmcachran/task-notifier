@@ -222,7 +222,7 @@ class HelpScout {
 		$args = array(
 			'page' => $page,
 			'tag' => implode( ',', self::$conversation_tags ),
-			//'status' => 'active',
+			// 'status' => 'active',
 		);
 
 		$request .= '?' . http_build_query( $args );

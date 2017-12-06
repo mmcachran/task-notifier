@@ -67,7 +67,7 @@ class Slack {
 		);
 
 		// Encode the conversation fields.
-		$data = 'payload=' . json_encode( $fields );
+		$data = 'payload=' . json_encode( $fields ); // @codingStandardsIgnoreLine
 
 		// Post the message.
 		$response = Request::post( self::WEBHOOK_URL, $data );

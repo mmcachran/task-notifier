@@ -24,7 +24,7 @@ class Debug {
 	public static function dump() {
 		static $need_styles = true;
 
-		if ( $need_styles ) {
+		if ( $need_styles ) :
 			?>
 			<style>
 			.wds-debug {
@@ -59,25 +59,35 @@ class Debug {
 			</style>
 			<?php
 			$need_styles = false;
-		} // End if().
+		endif; // End if().
 
-		echo '<div class="wds-debug"><div class="wds-debug-wrap">';
-		foreach ( func_get_args() as $param ) {
-			echo '<pre>';
-			var_dump( $param ); // @codingStandardsIgnoreLine
-			echo '</pre>';
-		}
-		echo '<table class="wds-trace" cellspacing="0" cellpadding="2" border="1">';
-		foreach ( debug_backtrace() as $id => $item ) {
-			printf(
-				'<tr><td>%1$s</td><td>%2$s : %3$s</td></tr>',
-				$id, // @codingStandardsIgnoreLine
-				@$item['file'], // @codingStandardsIgnoreLine
-				@$item['line'] // @codingStandardsIgnoreLine
-			);
-		}
-		echo '</table>';
-		echo '</div></div>';
+		?>
+		<div class="wds-debug"><div class="wds-debug-wrap">
+			<?php
+
+			// Loop through all function arguments.
+			foreach ( func_get_args() as $param ) {
+				echo '<pre>';
+				var_dump( $param ); // @codingStandardsIgnoreLine
+				echo '</pre>';
+			}
+
+			?>
+			<table class="wds-trace" cellspacing="0" cellpadding="2" border="1">
+				<?php
+				// Loop through backtrace.
+				foreach ( debug_backtrace() as $id => $item ) {
+					printf(
+						'<tr><td>%1$s</td><td>%2$s : %3$s</td></tr>',
+						$id, // @codingStandardsIgnoreLine
+						@$item['file'], // @codingStandardsIgnoreLine
+						@$item['line'] // @codingStandardsIgnoreLine
+					);
+				}
+				?>
+			</table>
+		</div></div>
+		<?php
 	}
 
 	/**
