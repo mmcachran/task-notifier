@@ -110,6 +110,7 @@ class Base {
 			'code' => $code,
 		);
 
+		// Build the authorization token request.
 		$token_url = self::API_BASE . 'authorization/token';
 
 		$response = \Request::post( $token_url, $params );
@@ -213,6 +214,11 @@ class Base {
 	 * @return array|bool    Topics or false on failure
 	 */
 	protected function get_topics( $page = 1 ) {
+		// Bail early if no oauth access tokens.
+		if ( empty(  $this->oauth_tokens->access_token ) ) {
+			return false;
+		}
+
 		$topics_url = 'https://basecamp.com/' . BC_ID . '/api/v1/topics.json';
 
 		// Add additional params to request url.
