@@ -22,8 +22,10 @@ class Debug {
 	 * @return void
 	 */
 	public static function dump() {
+		// Keep track of if styles have been added or not.
 		static $need_styles = true;
 
+		// Add styles if needed.
 		if ( $need_styles ) :
 			?>
 			<style>
