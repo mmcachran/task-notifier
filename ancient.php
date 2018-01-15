@@ -5,8 +5,10 @@
  * @package Basecamp RSS Feed Parser
  */
 
+ // Sets the default timezone.
 date_default_timezone_set( 'America/New_York' );
 
+// Set a constant for the base directory path.
 define( 'BASE_DIR', realpath( dirname( __FILE__ ) ) );
 
 // Include config file.
