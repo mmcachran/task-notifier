@@ -62,7 +62,7 @@ class Debug {
 		endif; // End if().
 
 		?>
-		<div class="wds-debug"><div class="wds-debug-wrap">
+		<div class="debug"><div class="debug-wrap">
 			<?php
 
 			// Loop through all function arguments.
@@ -73,7 +73,7 @@ class Debug {
 			}
 
 			?>
-			<table class="wds-trace" cellspacing="0" cellpadding="2" border="1">
+			<table class="trace" cellspacing="0" cellpadding="2" border="1">
 				<?php
 				// Loop through backtrace.
 				foreach ( debug_backtrace() as $id => $item ) {
