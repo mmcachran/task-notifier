@@ -15,5 +15,4 @@ Parses the Basecamp RSS feed.
 ```INSERT INTO `options` (`option_id`, `option_name`, `option_value`)
 VALUES
 	(1, 'bc_tokens', ''),
-	(2, 'last_run', '');
-```
+	(2, 'last_run', '');```
