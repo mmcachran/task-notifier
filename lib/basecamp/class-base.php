@@ -92,7 +92,7 @@ class Base {
 		$authorization_url = self::API_BASE . 'authorization/new?' . http_build_query( $params );
 
 		// Redirect the user for authorization.
-		Utilities::redirect( $authorization_url );
+		\Utilities::redirect( $authorization_url );
 	}
 
 	/**

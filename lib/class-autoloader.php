@@ -42,7 +42,7 @@ class Autoloader {
 				// If we're at the first entry, then we're at the filename.
 				if ( $file_parts_count - 1 === $i ) {
 					$filename = "class-{$current}.php";
-				} elseif ( ! ( 'wds-rr-svg-maps' === $current ) ) {
+				} else {
 					$namespace = $current . '/' . $namespace;
 				}
 			}
