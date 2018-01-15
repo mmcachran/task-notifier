@@ -27,7 +27,6 @@ class Basecamp_New_Tasks extends \Basecamp\Base {
 		'support',
 		'bulk hours',
 		'retainer',
-		'webdevstudios',
 	);
 
 	/**
@@ -47,9 +46,7 @@ class Basecamp_New_Tasks extends \Basecamp\Base {
 	 *
 	 * @var array
 	 */
-	protected $excluded_projects = array(
-		'Viacom Blog',
-	);
+	protected $excluded_projects = array();
 
 	/**
 	 * Returns a single instance of the class
