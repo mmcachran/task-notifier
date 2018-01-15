@@ -5,6 +5,8 @@
  * @package Basecamp RSS Feed Parser
  */
 
+date_default_timezone_set( 'America/New_York' );
+
 define( 'BASE_DIR', realpath( dirname( __FILE__ ) ) );
 
 // Include config file.

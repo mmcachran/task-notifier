@@ -31,6 +31,7 @@ class Cache {
 	 * Cache tokens after successful request
 	 *
 	 * @param  object $tokens tokens object from API.
+	 * @return void
 	 */
 	public static function save_tokens( $tokens ) {
 		$cache_file = BASE_DIR . '/cache/tokens.txt';
@@ -62,7 +63,9 @@ class Cache {
 	}
 
 	/**
-	 * Cache timestamp after successful request
+	 * Cache timestamp after successful request.
+	 *
+	 * @return void
 	 */
 	public static function save_last_run() {
 		$cache_file = BASE_DIR . '/cache/last_run.txt';
