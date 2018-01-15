@@ -11,3 +11,9 @@ Parses the Basecamp RSS feed.
   UNIQUE KEY `option_name` (`option_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;```
 
+# Create the options
+```INSERT INTO `options` (`option_id`, `option_name`, `option_value`)
+VALUES
+	(1, 'bc_tokens', ''),
+	(2, 'last_run', '');
+```
