@@ -93,7 +93,7 @@ class Basecamp_New_Tasks extends \Basecamp\Base {
 			);
 
 			// Add additional info to the topic.
-			$topics[ $key ]->topic_info = Request::get( $topic->topicable->url, $auth_args );
+			$topics[ $key ]->topic_info = \Request::get( $topic->topicable->url, $auth_args );
 		}
 
 		// Update last run.
