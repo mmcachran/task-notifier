@@ -116,7 +116,7 @@ class Basecamp_New_Tasks extends \Basecamp\Base {
 				continue;
 			}
 
-			// This project is exluded.
+			// This project is excluded.
 			return false;
 		}
 
