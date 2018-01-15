@@ -60,9 +60,10 @@ class Base {
 	 * @return void
 	 */
 	protected function do_auth() {
+		// Attempt to refresh tokens.
 		$this->attempt_to_refresh_tokens();
 
-		// Check for expired token.
+		// Check for expired token and attempt to refresh again if necessary.
 		if ( ! empty( $this->oauth_tokens ) ) {
 			$this->attempt_to_refresh_tokens();
 		}
