@@ -6,19 +6,19 @@
  */
 
 // Sets the default timezone.
-date_default_timezone_set( 'America/New_York' );
+date_default_timezone_set( 'America/New_York' ); // @codingStandardsIgnoreLine
 
 // Set a constant for the base directory path.
 define( 'BASE_DIR', realpath( dirname( __FILE__ ) ) );
 
 // Include config file.
 if ( file_exists( BASE_DIR . '/config.php' ) ) {
-	require_once( BASE_DIR . '/config.php' );
+	require_once BASE_DIR . '/config.php' ;
 }
 
 // Include autoloader file.
 if ( file_exists( BASE_DIR . '/lib/class-autoloader.php' ) ) {
-	require_once( BASE_DIR . '/lib/class-autoloader.php' );
+	require_once BASE_DIR . '/lib/class-autoloader.php';
 }
 
 // Check for un and pw to be defined.
@@ -69,7 +69,7 @@ endif;
 
 // Get an instance of BC class and fetch new topics.
 $basecamp = \Basecamp\Basecamp_New_Tasks::get_instance();
-$topics = $basecamp->get_new_topics();
+$topics   = $basecamp->get_new_topics();
 
 // Bail early if no topics.
 if ( empty( $topics ) ) {
@@ -81,7 +81,7 @@ $slack = \Slack::get_instance();
 
 // Loop through and create conversations.
 foreach ( (array) $topics as $topic ) {
-	$message = $topic->bucket->name . "\n";
+	$message  = $topic->bucket->name . "\n";
 	$message .= 'Title: ' . $topic->title . "\n";
 	$message .= 'From: ' . $topic->last_updater->name . "\n";
 

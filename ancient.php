@@ -6,23 +6,23 @@
  */
 
  // Sets the default timezone.
-date_default_timezone_set( 'America/New_York' );
+date_default_timezone_set( 'America/New_York' ); // @codingStandardsIgnoreLine
 
 // Set a constant for the base directory path.
 define( 'BASE_DIR', realpath( dirname( __FILE__ ) ) );
 
 // Include config file.
 if ( file_exists( BASE_DIR . '/config.php' ) ) {
-	require_once( BASE_DIR . '/config.php' );
+	require_once BASE_DIR . '/config.php';
 }
 
 // Include autoloader file.
 if ( file_exists( BASE_DIR . '/lib/class-autoloader.php' ) ) {
-	require_once( BASE_DIR . '/lib/class-autoloader.php' );
+	require_once BASE_DIR . '/lib/class-autoloader.php';
 }
 
 // Fetch old tasks.
-$basecamp = \Basecamp\Basecamp_Old_Tasks::get_instance();
+$basecamp 	   = \Basecamp\Basecamp_Old_Tasks::get_instance();
 $project_tasks = $basecamp->get_old_tasks();
 
 ?>
