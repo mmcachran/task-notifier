@@ -37,6 +37,33 @@ class Base {
 	 */
 	protected $debug = false;
 
+	/**
+	 * BC ID
+	 *
+	 * @var string
+	 */
+	protected $bc_id = '';
+
+	/**
+	 * BC Client ID
+	 *
+	 * @var string
+	 */
+	protected $client_id = '';
+
+	/**
+	 * BC Client Secret
+	 *
+	 * @var string
+	 */
+	protected $client_secret = '';
+
+	/**
+	 * Redirect URI.
+	 *
+	 * @var string
+	 */
+	protected $redirect_uri = '';
 
 	/**
 	 * Constructor for BC class
@@ -48,7 +75,7 @@ class Base {
 
 		// Attempt to fetch OAuth tokens and last run info from the database.
 		$this->oauth_tokens = \Option::get( 'bc_tokens' );
-		$this->last_run = ! $this->debug ? \Option::get( 'bc_last_run' ) : false;
+		$this->last_run     = ! $this->debug ? \Option::get( 'bc_last_run' ) : false;
 
 		// Perform BC token auth.
 		$this->do_auth();
@@ -69,7 +96,7 @@ class Base {
 		}
 
 		// Authorize user.
-		if ( empty( $this->oauth_tokens ) && ! isset( $_GET['code'] ) ) {
+		if ( empty( $this->oauth_tokens ) && ! isset( $_GET['code'] ) ) { // @codingStandardsIgnoreLine
 			$this->authorize();
 		}
 
@@ -86,9 +113,9 @@ class Base {
 	 */
 	protected function authorize() {
 		$params = array(
-			'type' => 'web_server',
-			'client_id' => BC_CLIENT_ID,
-			'redirect_uri' => BC_REDIRECT_URI,
+			'type' 		   => 'web_server',
+			'client_id'    => $this->client_id,
+			'redirect_uri' => $this->redirect_uri,
 		);
 
 		$authorization_url = self::API_BASE . 'authorization/new?' . http_build_query( $params );
@@ -105,11 +132,11 @@ class Base {
 	 */
 	protected function get_tokens( $code ) {
 		$params = array(
-			'type' => 'web_server',
-			'client_id' => BC_CLIENT_ID,
-			'client_secret' => BC_CLIENT_SECRET,
-			'redirect_uri' => BC_REDIRECT_URI,
-			'code' => $code,
+			'type'          => 'web_server',
+			'client_id'     => $this->client_id,
+			'client_secret' => $this->client_secret,
+			'redirect_uri'  => $this->redirect_uri,
+			'code'          => $code,
 		);
 
 		// Build the authorization token request.
@@ -163,10 +190,10 @@ class Base {
 	 */
 	protected function get_token_from_refresh_token() {
 		$params = array(
-			'type' => 'refresh',
-			'client_id' => BC_CLIENT_ID,
-			'redirect_uri' => BC_REDIRECT_URI,
-			'client_secret' => BC_CLIENT_SECRET,
+			'type'          => 'refresh',
+			'client_id'     => $this->client_id,
+			'redirect_uri'  => $this->redirect_uri,
+			'client_secret' => $this->client_secret,
 			'refresh_token' => $this->oauth_tokens->refresh_token,
 		);
 
@@ -181,7 +208,7 @@ class Base {
 
 		// Add refresh token and timestamp.
 		$response->refresh_token = $this->oauth_tokens->refresh_token;
-		$response->timestamp = strtotime( 'now' );
+		$response->timestamp     = strtotime( 'now' );
 
 		// Update tokens option.
 		\Option::update( 'bc_tokens', $response );
@@ -200,7 +227,7 @@ class Base {
 			$this->authorize();
 		}
 
-		$projects_url = 'https://basecamp.com/' . BC_ID . '/api/v1/projects.json';
+		$projects_url = 'https://basecamp.com/' . $this->bc_id . '/api/v1/projects.json';
 
 		$auth_args = array(
 			'token' => $this->oauth_tokens->access_token,
@@ -221,7 +248,7 @@ class Base {
 			return false;
 		}
 
-		$topics_url = 'https://basecamp.com/' . BC_ID . '/api/v1/topics.json';
+		$topics_url = 'https://basecamp.com/' . $this->bc_id . '/api/v1/topics.json';
 
 		// Add additional params to request url.
 		$params = array(
@@ -244,5 +271,45 @@ class Base {
 		}
 
 		return $results;
+	}
+
+	/**
+	 * Sets the BC ID.
+	 *
+	 * @param string $bc_id The BC ID.
+	 * @return void
+	 */
+	public function set_bc_id( $bc_id ) {
+		$this->bc_id = $bc_id;
+	}
+
+	/**
+	 * Sets the BC client ID.
+	 *
+	 * @param string $client_id The BC client ID.
+	 * @return void
+	 */
+	public function set_client_id( $client_id ) {
+		$this->client_id = $client_id;
+	}
+
+	/**
+	 * Sets the BC client secret.
+	 *
+	 * @param string $client_secret The BC client secret.
+	 * @return void
+	 */
+	public function set_client_secret( $client_secret ) {
+		$this->client_secret = $client_secret;
+	}
+
+	/**
+	 * Sets the BC redirect uri.
+	 *
+	 * @param string $redirect_uri The BC client ID.
+	 * @return void
+	 */
+	public function set_redirect_uri( $redirect_uri ) {
+		$this->redirect_uri = $redirect_uri;
 	}
 }

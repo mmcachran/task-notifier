@@ -21,10 +21,17 @@ if ( file_exists( BASE_DIR . '/lib/class-autoloader.php' ) ) {
 	require_once BASE_DIR . '/lib/class-autoloader.php';
 }
 
-// Fetch old tasks.
-$basecamp 	   = \Basecamp\Basecamp_Old_Tasks::get_instance();
-$project_tasks = $basecamp->get_old_tasks();
+// Initialize the BC old tasks class.
+$basecamp = \Basecamp\Basecamp_Old_Tasks::get_instance();
 
+// Set some properties for OAuth.
+$basecamp->set_bc_id( BC_ID );
+$basecamp->set_client_id( BC_CLIENT_ID );
+$basecamp->set_client_secret( BC_CLIENT_SECRET );
+$basecamp->set_redirect_uri( BC_REDIRECT_URI );
+
+// Fetch old tasks.
+$project_tasks = $basecamp->get_old_tasks();
 ?>
 
 <!DOCTYPE html>

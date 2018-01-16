@@ -67,9 +67,17 @@ if ( ! function_exists( 'get_project_slack_channel' ) ) :
 	}
 endif;
 
-// Get an instance of BC class and fetch new topics.
+// Get an instance of BC new tasks class.
 $basecamp = \Basecamp\Basecamp_New_Tasks::get_instance();
-$topics   = $basecamp->get_new_topics();
+
+// Set some properties for OAuth.
+$basecamp->set_bc_id( BC_ID );
+$basecamp->set_client_id( BC_CLIENT_ID );
+$basecamp->set_client_secret( BC_CLIENT_SECRET );
+$basecamp->set_redirect_uri( BC_REDIRECT_URI );
+
+// Fetch new topics.
+$topics = $basecamp->get_new_topics();
 
 // Bail early if no topics.
 if ( empty( $topics ) ) {
