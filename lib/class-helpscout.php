@@ -37,7 +37,7 @@ class HelpScout {
 	 * @var array
 	 */
 	protected static $conversation_tags = array(
-		'basecamp'
+		'basecamp',
 	);
 
 	/**
@@ -45,7 +45,7 @@ class HelpScout {
 	 */
 	public static function get_instance() {
 		if ( null === self::$instance ) {
-			self::$instance = new self;
+			self::$instance = new self();
 		}
 
 		return self::$instance;
@@ -72,13 +72,13 @@ class HelpScout {
 
 		// Set default fields.
 		$fields = array(
-			'mailbox' => array(
+			'mailbox'  => array(
 				'id' => HS_MAILBOX_ID,
 			),
 			'customer' => array(
 				'email' => HS_CUSTOMER_EMAIL,
 			),
-			'tags' => self::$conversation_tags,
+			'tags'     => self::$conversation_tags,
 		);
 
 		// Merge fields together and encode for post request.
@@ -108,17 +108,17 @@ class HelpScout {
 		$update_conversation_endpoint = str_replace( '{id}', $id, self::UPDATE_CONVERSATION_ENDPOINT );
 
 		$fields = array(
-			'mailbox' => HS_MAILBOX_ID,
-			'customer' => array(
+			'mailbox'   => HS_MAILBOX_ID,
+			'customer'  => array(
 				'email' => HS_CUSTOMER_EMAIL,
 			),
-			'body' => $conversation['threads'][0]['body'],
+			'body'      => $conversation['threads'][0]['body'],
 			'createdBy' => $conversation['threads'][0]['createdBy'],
-			'type' => 'message',
+			'type'      => 'message',
 		);
 
 		// encode the conversation fields.
-		$fields = json_encode( $fields );
+		$fields = json_encode( $fields ); // @codingStandardsIgnoreLine
 
 		// fetch default args.
 		$args = self::get_default_args();
@@ -221,7 +221,7 @@ class HelpScout {
 
 		$args = array(
 			'page' => $page,
-			'tag' => implode( ',', self::$conversation_tags ),
+			'tag'  => implode( ',', self::$conversation_tags ),
 			// 'status' => 'active', // @codingStandardsIgnoreLine
 		);
 

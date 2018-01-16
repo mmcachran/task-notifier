@@ -56,7 +56,7 @@ class Request {
 		if ( $return_all ) {
 			return array(
 				'response' => $response,
-				'info' => $info,
+				'info'     => $info,
 			);
 		}
 
@@ -79,8 +79,8 @@ class Request {
 		curl_setopt( $ch, CURLOPT_URL, $url ); // @codingStandardsIgnoreLine
 
 		if ( is_array( $fields ) ) {
-			curl_setopt( $ch,CURLOPT_POST, count( $fields ) ); // @codingStandardsIgnoreLine
-			curl_setopt( $ch,CURLOPT_POSTFIELDS, http_build_query( $fields ) );
+			curl_setopt( $ch, CURLOPT_POST, count( $fields ) ); // @codingStandardsIgnoreLine
+			curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query( $fields ) ); // @codingStandardsIgnoreLine
 		} else {
 			curl_setopt( $ch, CURLOPT_POSTFIELDS, $fields ); // @codingStandardsIgnoreLine
 

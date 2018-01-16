@@ -53,10 +53,10 @@ class Utilities {
 	 */
 	public static function get_time_diff_class( $diff ) {
 		switch ( true ) {
-			case ( (int) $diff > 3 ) :
+			case ( (int) $diff > 3 ):
 				return 'red';
 
-			case ( (int) $diff > 1 ) :
+			case ( (int) $diff > 1 ):
 				return 'yellow';
 
 			default:

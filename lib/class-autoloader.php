@@ -68,7 +68,7 @@ class Autoloader {
 		}
 
 		// Include the file.
-		include_once( $filepath );
+		include_once $filepath;
 	}
 }
 spl_autoload_register( 'Autoloader::wds_autoload_classes' );

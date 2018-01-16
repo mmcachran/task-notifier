@@ -78,7 +78,7 @@ class Debug {
 			<table class="trace" cellspacing="0" cellpadding="2" border="1">
 				<?php
 				// Loop through backtrace.
-				foreach ( debug_backtrace() as $id => $item ) {
+				foreach ( debug_backtrace() as $id => $item ) { // @codingStandardsIgnoreLine
 					printf(
 						'<tr><td>%1$s</td><td>%2$s : %3$s</td></tr>',
 						$id, // @codingStandardsIgnoreLine
