@@ -47,6 +47,14 @@ if ( empty( $topics ) ) {
 // Instantiate the Slack class.
 $slack = \Slack::get_instance();
 
+// Set priority todo lists.
+$slack->set_priority_lists( array() );
+
+// Set Slack project channel mapping.
+$slack->set_channel_mapping( array() );
+
+echo '<pre>'; var_dump( $slack ); die;
+
 // Loop through and create conversations.
 foreach ( (array) $topics as $topic ) {
 	$message  = $topic->bucket->name . "\n";

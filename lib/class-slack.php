@@ -17,9 +17,24 @@ class Slack {
 	/**
 	 * Holds single instance of this class
 	 *
-	 * @var Slack
+	 * @var \Slack
 	 */
 	protected static $instance = null;
+
+	/**
+	 * Priority lists. todolist_id => Slack room.
+	 *
+	 * @var array
+	 */
+	protected $priority_lists = array();
+
+	/**
+	 * Slack channel mapping
+	 * Text to match on bucket name => Slack room.
+	 *
+	 * @var array
+	 */
+	protected $channel_mapping = array();
 
 	/**
 	 * Returns a single instance of the class
@@ -72,6 +87,7 @@ class Slack {
 		// Post the message.
 		$response = Request::post( self::WEBHOOK_URL, $data );
 	}
+
 	/**
 	 * Helper method to determine where updates should go in Slack.
 	 *
@@ -79,24 +95,13 @@ class Slack {
 	 * @return string        Slack room or false if the mapping doesn't exist.
 	 */
 	public static function get_project_channel( $topic ) {
-		// Priority lists. id => Slack room.
-		$priority_lists = array();
-
 		// Bail early if the list matches.
-		if ( isset( $priority_lists[ $topic->topic_info->todolist_id ] ) ) {
-			return $priority_lists[ $topic->topic_info->todolist_id ];
+		if ( ! empty( $this->priority_lists[ $topic->topic_info->todolist_id ] ) ) {
+			return $this->priority_lists[ $topic->topic_info->todolist_id ];
 		}
 
-		/**
-		 * Slack channel mapping
-		 * Text to match on bucket name => Slack room.
-		 *
-		 * @var array
-		 */
-		$slack_channel_mapping = array();
-
 		// Loop through and find the channel.
-		foreach ( $slack_channel_mapping as $name => $channel ) {
+		foreach ( $this->slack_channel_mapping as $name => $channel ) {
 			// Skip if not the correct channel.
 			if ( ! stristr( $topic->bucket->name, $name ) ) {
 				continue;
@@ -108,5 +113,25 @@ class Slack {
 
 		// Return the default channel.
 		return false;
+	}
+
+	/**
+	 * Sets priority lists for Slack channel mapping.
+	 *
+	 * @param array $priority_lists Any todo lists that should always be sent to Slack.
+	 * @return void
+	 */
+	public function set_priority_lists( array $priority_lists ) {
+		$this->priority_lists = $priority_lists;
+	}
+
+	/**
+	 * Sets priority lists for Slack channel mapping.
+	 *
+	 * @param array $channel_mapping Slack channel mapping for BC projects.
+	 * @return void
+	 */
+	public function set_channel_mapping( array $channel_mapping ) {
+		$this->channel_mapping = $channel_mapping;
 	}
 }
