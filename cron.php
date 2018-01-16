@@ -27,46 +27,6 @@ if ( ! defined( 'BC_CLIENT_ID' ) || ! defined( 'BC_CLIENT_SECRET' ) ) {
 	exit( 0 );
 }
 
-if ( ! function_exists( 'get_project_slack_channel' ) ) :
-	/**
-	 * Function to determine where updates should go in Slack.
-	 *
-	 * @param  object $topic Topic object.
-	 * @return string        Slack room or false if the mapping doesn't exist.
-	 */
-	function get_project_slack_channel( $topic ) {
-		// Priority lists. id => Slack room.
-		$priority_lists = array();
-
-		// Bail early if the list matches.
-		if ( isset( $priority_lists[ $topic->topic_info->todolist_id ] ) ) {
-			return $priority_lists[ $topic->topic_info->todolist_id ];
-		}
-
-		/**
-		 * Slack channel mapping
-		 * Text to match on bucket name => Slack room.
-		 *
-		 * @var array
-		 */
-		$slack_channel_mapping = array();
-
-		// Loop through and find the channel.
-		foreach ( $slack_channel_mapping as $name => $channel ) {
-			// Skip if not the correct channel.
-			if ( ! stristr( $topic->bucket->name, $name ) ) {
-				continue;
-			}
-
-			// Return the channel.
-			return $channel;
-		}
-
-		// Return the default channel.
-		return false;
-	}
-endif;
-
 // Get an instance of BC new tasks class.
 $basecamp = \Basecamp\Basecamp_New_Tasks::get_instance();
 
@@ -105,7 +65,7 @@ foreach ( (array) $topics as $topic ) {
 	$message .= $topic->topicable->app_url;
 
 	// Get the project channel.
-	$project_channel = get_project_slack_channel( $topic );
+	$project_channel = $slack::get_project_channel( $topic );
 
 	// Send the message to the project channel if available.
 	if ( ! ( false === $project_channel ) ) {
