@@ -53,7 +53,7 @@ class Basecamp_New_Tasks extends \Basecamp\Base {
 	 */
 	public static function get_instance() {
 		if ( null === self::$instance ) {
-			self::$instance = new self;
+			self::$instance = new self();
 		}
 
 		return self::$instance;
