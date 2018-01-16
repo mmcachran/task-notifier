@@ -25,7 +25,7 @@ class Autoloader {
 		}
 
 		// Get the file parts.
-		$file_parts = explode( '\\', $class_name );
+		$file_parts       = explode( '\\', $class_name );
 		$file_parts_count = count( $file_parts );
 
 		// Determine by namespace how to include files.
