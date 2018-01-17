@@ -33,7 +33,7 @@ class Request {
 		}
 
 		// Set user agent.
-		curl_setopt( $ch, CURLOPT_USERAGENT, 'WebDevStudios (http://webdevstudios.com)' ); // @codingStandardsIgnoreLine
+		curl_setopt( $ch, CURLOPT_USERAGENT, 'BC_RSS_Parset (http://github.com/mmcachran/basecamp-rss-feed-parser/)' ); // @codingStandardsIgnoreLine
 
 		$response = curl_exec( $ch ); // @codingStandardsIgnoreLine
 		$info = curl_getinfo( $ch ); // @codingStandardsIgnoreLine

@@ -18,7 +18,7 @@ class Autoloader {
 	 * @throws \Exception Throws an exception if the class file doesn't exist.
 	 * @return  null
 	 */
-	public static function wds_autoload_classes( $class_name ) {
+	public static function autoload_classes( $class_name ) {
 		// Bail early if class already exists.
 		if ( class_exists( $class_name ) ) {
 			return;
@@ -71,4 +71,4 @@ class Autoloader {
 		include_once $filepath;
 	}
 }
-spl_autoload_register( 'Autoloader::wds_autoload_classes' );
+spl_autoload_register( 'Autoloader::autoload_classes' );

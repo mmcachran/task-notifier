@@ -29,7 +29,7 @@ class Debug {
 		if ( $need_styles ) :
 			?>
 			<style>
-			.wds-debug {
+			.debug {
 				break: both;
 				border: 1px solid #C00;
 				background: rgba(255, 200, 200, 0.8);
@@ -40,7 +40,7 @@ class Debug {
 				box-shadow: 0 1px 5px rgba(0,0,0,0.3);
 				font-size: 12px;
 			}
-			.wds-debug:before {
+			.debug:before {
 				content: 'DEBUG';
 				font-size: 11px;
 				position: absolute;
@@ -50,10 +50,10 @@ class Debug {
 				background-color: #D88;
 				padding: 2px 8px;
 			}
-			.wds-debug .wds-debug-wrap {
+			.debug .debug-wrap {
 				box-shadow: 0 1px 5px rgba(0,0,0,0.18);
 			}
-			.wds-debug pre {
+			.debug pre {
 				font-size: 12px !important;
 				margin: 1px 0 !important;
 				background: rgba(255, 200, 200, 0.8);
