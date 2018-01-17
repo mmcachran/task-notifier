@@ -1,5 +1,5 @@
 {
-  "name": "wd_s",
+  "name": "basecamp-rss-feed-parser",
   "version": "1.0.0",
   "description": "",
   "main": "Gulpfile.js",
@@ -37,14 +37,14 @@
   "scripts": {
     "test": "echo \"No test specified\""
   },
-  "repository": "",
+  "repository": "https://github.com/mmcachran/basecamp-rss-feed-parser/",
   "keywords": [
     "theme"
   ],
   "author": "mmcachran",
   "license": "GPL-3.0",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/mmcachran/basecamp-rss-feed-parser/issues"
   },
-  "homepage": ""
+  "homepage": "https://github.com/mmcachran/basecamp-rss-feed-parser/"
 }
