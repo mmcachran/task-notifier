@@ -101,6 +101,7 @@ class Basecamp_Old_Tasks extends \Basecamp\Base {
 		// Build the request URL.
 		$tasks_url = 'https://basecamp.com/' . $this->bc_id . '/api/v1/projects/' . $project_id . '/todos/remaining.json';
 
+		// Build authentication with access token.
 		$auth_args = array(
 			'token' => $this->oauth_tokens->access_token,
 		);
