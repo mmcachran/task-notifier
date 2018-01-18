@@ -5,6 +5,8 @@
  * @package Basecamp RSS Feed Parser
  */
 
+namespace Utilities;
+
 /**
  * Class for debugging functionality.
  */

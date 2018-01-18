@@ -1,14 +1,16 @@
 <?php
 /**
- * Utilities Class
+ * Serialization Class
  *
  * @package Basecamp RSS Feed Parser
  */
 
+namespace Utilities;
+
 /**
- * Class to hold utilities.
+ * Class to hold serialization utilities.
  */
-class Utilities {
+class Serialization {
 	/**
 	 * Unserialize a variable if serialized
 	 *
@@ -32,35 +34,5 @@ class Utilities {
 		}
 
 		return ( false === @unserialize( $var ) ) ? false : true; // @codingStandardsIgnoreLine
-	}
-
-	/**
-	 * Redirect the user
-	 *
-	 * @param  string $url URL to redirect user to.
-	 * @return void
-	 */
-	public static function redirect( $url ) {
-		header( 'Location: ' . $url );
-		exit( 0 );
-	}
-
-	/**
-	 * Get the class to add to the table row based on days since last update.
-	 *
-	 * @param  int $diff Days since the last update.
-	 * @return string    Class to add to table row.
-	 */
-	public static function get_time_diff_class( $diff ) {
-		switch ( true ) {
-			case ( (int) $diff > 3 ):
-				return 'red';
-
-			case ( (int) $diff > 1 ):
-				return 'yellow';
-
-			default:
-				return '';
-		}
 	}
 }

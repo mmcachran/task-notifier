@@ -68,6 +68,6 @@ class Option {
 			return false;
 		}
 
-		return $return_single ? Utilities::maybe_unserialize( $results[0]['option_value'] ) : $results;
+		return $return_single ? \Utilities\Serialization::maybe_unserialize( $results[0]['option_value'] ) : $results;
 	}
 }

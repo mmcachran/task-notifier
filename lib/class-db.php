@@ -61,22 +61,22 @@ class DB {
 	 */
 	protected static function check_db_credentials() {
 		if ( ! defined( 'DB_HOST' ) ) {
-			Debug::dump( 'DB_HOST not defined' );
+			\Utilities\Debug::dump( 'DB_HOST not defined' );
 			exit( 0 );
 		}
 
 		if ( ! defined( 'DB_NAME' ) ) {
-			Debug::dump( 'DB_NAME not defined' );
+			\Utilities\Debug::dump( 'DB_NAME not defined' );
 			exit( 0 );
 		}
 
 		if ( ! defined( 'DB_USER' ) ) {
-			Debug::dump( 'DB_USER not defined' );
+			\Utilities\Debug::dump( 'DB_USER not defined' );
 			exit( 0 );
 		}
 
 		if ( ! defined( 'DB_PASS' ) ) {
-			Debug::dump( 'DB_PASS not defined' );
+			\Utilities\Debug::dump( 'DB_PASS not defined' );
 			exit( 0 );
 		}
 	}
