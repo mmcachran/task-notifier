@@ -21,7 +21,7 @@ if ( file_exists( BASE_DIR . '/lib/class-autoloader.php' ) ) {
 	require_once BASE_DIR . '/lib/class-autoloader.php';
 }
 
-// Check for un and pw to be defined.
+// Check for BC credentials to be defined.
 if ( ! defined( 'BC_CLIENT_ID' ) || ! defined( 'BC_CLIENT_SECRET' ) ) {
 	echo 'BC_CLIENT_ID or BC_CLIENT_SECRET not defined. Define these in a config file in the document root.';
 	exit( 0 );
