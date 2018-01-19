@@ -5,28 +5,13 @@
  * @package Basecamp RSS Feed Parser
  */
 
- // Sets the default timezone.
-date_default_timezone_set( 'America/New_York' ); // @codingStandardsIgnoreLine
-
-// Set a constant for the base directory path.
+ // Set a constant for the base directory path.
 define( 'BASE_DIR', realpath( dirname( __FILE__ ) ) );
 
 // Include config file.
-if ( file_exists( BASE_DIR . '/config.php' ) ) {
-	require_once BASE_DIR . '/config.php';
+if ( file_exists( BASE_DIR . '/loader.php' ) ) {
+	require_once BASE_DIR . '/loader.php';
 }
-
-// Include autoloader file.
-if ( file_exists( BASE_DIR . '/lib/class-autoloader.php' ) ) {
-	require_once BASE_DIR . '/lib/class-autoloader.php';
-}
-
-// Check for BC credentials to be defined.
-if ( ! defined( 'BC_CLIENT_ID' ) || ! defined( 'BC_CLIENT_SECRET' ) ) {
-	echo 'BC_CLIENT_ID or BC_CLIENT_SECRET not defined. Define these in a config file in the document root.';
-	exit( 0 );
-}
-
 
 // Initialize the BC old tasks class.
 $basecamp = \Basecamp\Basecamp_Old_Tasks::get_instance();
