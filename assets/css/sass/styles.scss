@@ -1,0 +1,52 @@
+body {
+   background-color: #FFF;
+   font-family: Arial;
+   font-size: 12px;
+
+   .project {
+       .project-title {
+            color: #111; 
+            font-family: 'Helvetica Neue', sans-serif; 
+            font-size: 2em; 
+            font-weight: bold; 
+            letter-spacing: -1px; 
+            line-height: 1; 
+       }
+   }
+
+    .table {
+        display: table;
+        border: 1px solid #40A1F5;
+        width: 1200px;
+
+        .th {
+            display: table-row;
+            background-color: #40A1F5;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .tr {
+            display: table-row;
+            border-bottom: 1px solid #000;
+
+            &:nth-child(odd) {
+                background-color: #F9F9F9;
+            }
+
+            &:last-child .td{
+                border: 0;
+            }
+        }
+
+        .td {
+            display: table-cell;
+            padding: 15px;
+            border-bottom: 1px solid #40A1F5;
+        }
+
+        .clear {
+            clear: both;
+        }
+    } // .table
+}
