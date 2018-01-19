@@ -34,6 +34,12 @@ $project_tasks = $basecamp->get_old_tasks();
 		<script src="assets/js/ancient.min.js" type="text/javascript"> <?php // @codingStandardsIgnoreLine ?></script>
 	</head>
 	<body>
+		<div id="search-wrapper">
+			<input class="search" name="q" />
+			<label>
+				Search
+			</label>
+		</div>
 		<?php
 		foreach ( $project_tasks as $project => $tasks ) :
 			// Skip if no tasks.
