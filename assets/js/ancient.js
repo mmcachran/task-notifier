@@ -48,7 +48,7 @@ window.BC_RSS_Feed_Parser_Ancient = window.BC_RSS_Feed_Parser_Ancient || {};
         $( '.project' ).find( '.table .tr' ).each( function() {
             var $row = $( this );
 
-            // Don't hide by default.
+            // Hide by default.
             var hide = true;
 
             $row.find( '.td' ).each( function() {
