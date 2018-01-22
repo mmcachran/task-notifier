@@ -78,7 +78,7 @@ window.BC_RSS_Feed_Parser_Ancient = window.BC_RSS_Feed_Parser_Ancient || {};
         return true;
     };
 
-    // fire init on document.ready
+    // Fire init on document.ready.
     $( document ).ready( app.init );
 
     return app;
