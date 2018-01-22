@@ -1,4 +1,4 @@
-# basecamp-rss-feed-parser
+# Basecamp RSS Feed Parser
 Parses the Basecamp RSS feed.
 
 # Create the database and add an options table:
