@@ -5,7 +5,7 @@
  * @package Basecamp RSS Feed Parser
  */
 
- // Set a constant for the base directory path.
+// Set a constant for the base directory path.
 define( 'BASE_DIR', realpath( dirname( __FILE__ ) ) );
 
 // Include config file.
