@@ -76,9 +76,6 @@ class Base {
 		// Attempt to fetch OAuth tokens and last run info from the database.
 		$this->oauth_tokens = \Option::get( 'bc_tokens' );
 		$this->last_run     = ! $this->debug ? \Option::get( 'bc_last_run' ) : false;
-
-		// Perform BC token auth.
-		$this->do_auth();
 	}
 
 	/**
@@ -86,7 +83,7 @@ class Base {
 	 *
 	 * @return void
 	 */
-	protected function do_auth() {
+	public function do_auth() {
 		// Attempt to refresh tokens.
 		$this->attempt_to_refresh_tokens();
 

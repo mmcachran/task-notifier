@@ -21,6 +21,7 @@ $basecamp->set_bc_id( BC_ID );
 $basecamp->set_client_id( BC_CLIENT_ID );
 $basecamp->set_client_secret( BC_CLIENT_SECRET );
 $basecamp->set_redirect_uri( BC_REDIRECT_URI );
+$basecamp->do_auth();
 
 // Fetch old tasks.
 $project_tasks = $basecamp->get_old_tasks();
