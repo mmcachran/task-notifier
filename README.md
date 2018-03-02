@@ -1,5 +1,5 @@
-# Basecamp RSS Feed Parser
-Parses the Basecamp RSS feed.
+# Task Notifier
+Parses the Basecamp RSS feed to display old tasks and push recently updated/added tasks into Slack channels.
 
 # Create the database and add an options table:
 
